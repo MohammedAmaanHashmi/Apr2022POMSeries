@@ -6,6 +6,10 @@ public class Feature {
 	{
 		System.out.println("f1 feature");
 	}
+	public void f2()
+	{
+		System.out.println("f2 feature");
+	}
 
 	public static void main(String[] args) {
 		
