@@ -8,6 +8,9 @@ public class MyLoginPage {
 		System.out.println("my login page");
 
 		System.out.println("my login page with my user credenetials");
+		
+		int i=50;
+		int j=40;
 
 	}
 
