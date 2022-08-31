@@ -28,7 +28,7 @@ public class LoginPage {
 		eleUtil = new ElementUtil(driver);
 	}
 
-	// 3.page actions 
+	// 3.page actions
 	@Step("Getting login page title on the login page")
 	public String getLoginPageTitle() {
 		String title = eleUtil.waitForTitleToBe(AppConstants.LOGIN_PAGE_TITLE, AppConstants.SMALL_DEFAULT_TIME_OUT);
@@ -63,19 +63,20 @@ public class LoginPage {
 
 	@Step("perform search for the product: {0}")
 	public SearchResultsPage performSearch(String name) {
-		System.out.println("product name:"+name);
+		System.out.println("product name:" + name);
 		AccountsPage accPage = new AccountsPage(driver);
 		return accPage.doSearch(name);
 	}
+
 	@Step("Navigating to register page")
 	public RegisterPage goToRegisterPage() {
+		System.out.println("Navigating to register page");
 		eleUtil.doClick(registerLink);
 		return new RegisterPage(driver);
 	}
-	
-	@Test(enabled=false)
-	public void loginFooterTest()
-	{
+
+	@Test(enabled = false)
+	public void loginFooterTest() {
 		System.out.println("Login footer Test");
 	}
 
