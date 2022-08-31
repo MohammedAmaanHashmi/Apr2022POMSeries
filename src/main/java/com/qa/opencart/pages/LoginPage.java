@@ -45,6 +45,7 @@ public class LoginPage {
 
 	@Step("is forgot Pwd link Exist")
 	public boolean isForgotPwdLinkExist() {
+		System.out.println("forgot pwd link test");
 		return eleUtil.waitForElementPresence(fogotPwdLink, AppConstants.SMALL_DEFAULT_TIME_OUT).isDisplayed();
 	}
 
