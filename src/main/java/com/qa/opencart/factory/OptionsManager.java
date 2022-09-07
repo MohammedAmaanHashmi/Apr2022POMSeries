@@ -29,6 +29,14 @@ public class OptionsManager {
 		if (Boolean.parseBoolean(prop.getProperty("incognito"))) {
 			co.addArguments("--incognito");
 		}
+		
+		if(Boolean.parseBoolean(prop.getProperty("remote")))
+		{
+			co.setCapability("enableVNC", true);
+//			co.setCapability("se:screenResolution", "1920x1080");
+//			co.setPlatformName("linux");
+			co.setBrowserVersion(prop.getProperty("browserversion"));
+		}
 
 		return co;
 
@@ -45,6 +53,13 @@ public class OptionsManager {
 		if (Boolean.parseBoolean(prop.getProperty("incognito"))) {
 			fo.addArguments("--incognito");
 		}
+		if(Boolean.parseBoolean(prop.getProperty("remote")))
+		{
+			fo.setCapability("enableVNC", true);
+//			fo.setCapability("se:screenResolution", "1920x1080");
+//			fo.setPlatformName("linux");
+			fo.setBrowserVersion(prop.getProperty("browserversion"));
+		}
 
 		return fo;
 
@@ -60,6 +75,12 @@ public class OptionsManager {
 
 		if (Boolean.parseBoolean(prop.getProperty("incognito"))) {
 			eo.addArguments("--incognito");
+		}
+		if(Boolean.parseBoolean(prop.getProperty("remote")))
+		{
+			eo.setCapability("enableVNC", true);
+			eo.setCapability("se:screenResolution", "1920x1080");
+			eo.setPlatformName("linux");
 		}
 
 		return eo;
