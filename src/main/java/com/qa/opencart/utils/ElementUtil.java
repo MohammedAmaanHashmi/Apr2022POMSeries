@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -18,10 +19,13 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.qa.opencart.factory.OptionsManager;
+
 public class ElementUtil {
 
 	private WebDriver driver;
 	private Actions act;
+	public static Logger log = Logger.getLogger(ElementUtil.class);
 
 	public ElementUtil(WebDriver driver) {
 		this.driver = driver;
@@ -70,6 +74,7 @@ public class ElementUtil {
 	}
 
 	public WebElement getElement(By locator) {
+		log.info("By locator is "+locator);
 		return driver.findElement(locator);
 	}
 

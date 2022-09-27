@@ -10,6 +10,7 @@ import java.time.Duration;
 import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -37,14 +38,17 @@ public class DriverFactory {
 	public OptionsManager optionsManager;
 
 	public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<WebDriver>();
+	public static Logger log = Logger.getLogger(DriverFactory.class);
 
 	public WebDriver initDriver(Properties prop) {
 
 		String browserName = prop.getProperty("browser");
 		System.out.println("browser name is: " + browserName);
+		log.info("browser name is: " + browserName);
 		optionsManager = new OptionsManager(prop);
 
 		if (browserName.equalsIgnoreCase("chrome")) {
+			log.info("running test on chrome");
 
 			// driver = new ChromeDriver(optionsManager.getChromeOptions());
 			//
@@ -53,6 +57,7 @@ public class DriverFactory {
 				// remote execution on grid:
 				init_remoteWebDriver("chrome");
 			} else {
+				log.info("Running test on local chrome");
 				WebDriverManager.chromedriver().setup();
 
 				tlDriver.set(new ChromeDriver(optionsManager.getChromeOptions()));
@@ -85,6 +90,7 @@ public class DriverFactory {
 			}
 		} else {
 			System.out.println("please pass the right browser name " + browserName);
+			log.error("please pass the right browser...."+ browserName);
 		}
 
 		getDriver().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
